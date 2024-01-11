@@ -4,7 +4,7 @@ class Person {
     }
 
     sayMyName() {
-        return `Hello, my name is ${this.name}!`;
+        return `Hellooo, my name is ${this.name}!`;
     }
 }
 
