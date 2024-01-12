@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <%- include ('./partials/navbar.ejs')%>
+    <!-- Sintaxe do EJS para usar JS no HTML -->
+    <!-- <% const message = "Hello, World!!"%>
+        <h1><%= message %> </h1> -->
+
+        <div class="content">
+            <% if (users.length > 0) { %> <% users.forEach(user => { %>
+            
+            <h3 class="title"><%= user.firstName %> <%= user.lastName%>
+            </h3>
+            <p><%= user.email %></p>
+
+            <% })%> <% } else{ %>
+            <p>Não há usuários para exibir...</p>
+            <% } %>
+        
+    </div>
+
+    
+    
+</body>
+</html>

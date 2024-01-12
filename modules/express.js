@@ -7,10 +7,22 @@ const app = express();
 
 app.use(express.json());
 
+//HTML dinâmico usando o EJS
+app.set("view engine", "ejs");
+app.set("views", "src/views");
+
+app.get("/views/users", async (req, res) => {
+    const users = await UserModel.find({})
+    //res.render("index", { users: users});// O certo é assim, mas como a propriedade e a variavel têm os mesmos nomes, pode ser o de baixo
+    res.render("index", { users });
+});
+
 // Assim não vai precisar 'setar' o Contet-Type manualmente
 // app.get('/home', (req, res) => {
 //     res.status(200).send('<h1>Hello, World no express!!! </h1>');
 // })
+
+
 
 
 //Middlewares: Funções que são executadas antes das requisições
@@ -22,6 +34,7 @@ app.use((req, res, next) => {
     next();
 });
 
+//Buscar usuários
 app.get('/users', async (req, res) => {
     try{
         const users = await UserModel.find({})
